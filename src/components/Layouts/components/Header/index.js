@@ -1,7 +1,7 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleXmark, faSpinner, faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons';
+import { faCircleXmark, faSpinner, faMagnifyingGlass, faSignIn } from '@fortawesome/free-solid-svg-icons';
 import Tippy from '@tippyjs/react/headless';
 
 import images from '~/assets/images';
@@ -9,6 +9,7 @@ import { Wrapper as PopperWrapper } from '~/components/Popper';
 
 import { useEffect, useState } from 'react';
 import AccountItem from '~/components/AccountItem';
+import Button from '~/components/Button';
 
 const cx = classNames.bind(styles);
 
@@ -17,7 +18,7 @@ export default function Header() {
 
     useEffect(() => {
         setTimeout(() => {
-            setSearchResult([1]);
+            setSearchResult([]);
         }, 0);
     }, []);
 
@@ -49,7 +50,7 @@ export default function Header() {
                         <button className={cx('clear')}>
                             <FontAwesomeIcon icon={faCircleXmark} />
                         </button>
-                        {/* <FontAwesomeIcon className={cx('loading')} icon={faSpinner} /> */}
+                        <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
 
                         <button className={cx('search-btn')}>
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
@@ -58,7 +59,35 @@ export default function Header() {
                 </Tippy>
 
                 {/* Actions */}
-                <div className={cx('actions')}></div>
+                <div className={cx('actions')}>
+                    <Button text>Upload</Button>
+                    <Button primary>Log in</Button>
+
+                    {/* Left Right Icon In Button
+                    <Button primary rightIcon={<FontAwesomeIcon icon={faSignIn} />}>
+                        Log in
+                    </Button> */}
+                    {/* Custom class
+                    <Button primary className={cx('custom-login')}>
+                        Log in
+                    </Button> */}
+                    {/* Primary + Rounded
+                    <Button primary rounded>
+                        Log in
+                    </Button> */}
+                    {/* Outline + Rounded
+                    <Button outline rounded>
+                        Log in
+                    </Button> */}
+                    {/* Outline + small
+                    <Button outline small>
+                        Log out
+                    </Button> */}
+                    {/* Outline + Large
+                    <Button outline large>
+                        Log Log
+                    </Button> */}
+                </div>
             </div>
         </header>
     );
